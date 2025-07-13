@@ -1,6 +1,7 @@
 import { test, expect, BrowserContext, Page } from '@playwright/test';
 import { LoginPage } from './Model/LoginPage';
 import { extractDomainFromText } from './Common/LoginPageService';
+import { CommonSelectors } from './Common/CommonSelectors';
 
 test('@Web Browser Context-Validating Error login', async ({ browser }) => {
   const context: BrowserContext = await browser.newContext();
@@ -11,7 +12,7 @@ test('@Web Browser Context-Validating Error login', async ({ browser }) => {
   await loginPage.login('rahulshetty', 'learning');
   console.log(await page.title());
   console.log(await loginPage.getErrorText());
-  await expect(page.locator('[style*="block"]')).toContainText('Incorrect');
+  await expect(page.locator(CommonSelectors.errorBlock)).toContainText('Incorrect');
 
   await loginPage.userName.fill('');
   await loginPage.userName.fill('rahulshettyacademy');
@@ -24,7 +25,7 @@ test('@Web Browser Context-Validating Error login', async ({ browser }) => {
 
 test('@Web UI Controls', async ({ page }) => {
   const loginPage = new LoginPage(page);
-
+  console.log("run @Web UI Controls only");
   await loginPage.goto();
   await loginPage.selectConsultOption();
   await loginPage.selectLastRadio();
@@ -33,17 +34,37 @@ test('@Web UI Controls', async ({ page }) => {
   await loginPage.checkTerms();
   await expect(loginPage.terms).toBeChecked();
   await loginPage.uncheckTerms();
+  //loginPage.terms.isChecked() returns a Promise<boolean>.
+  //await the promise to get the boolean value, then pass it to expect.
+  //This is a standard Jest/Playwright assertion on a value.
+  //Move cursor to isChecked you will see promise
+  //(method) Locator.isChecked(options?: {
+  //  timeout?: number;
+  //}) : Promise
   expect(await loginPage.terms.isChecked()).toBeFalsy();
+  //Here, loginPage.documentLink is a Locator (not a value).
+  //Playwright’s expect(locator) API is auto-waiting: 
+  //it waits for the condition to be true within a timeout.
+  //You must await the expect itself, because it’s asynchronous and handles retries internally.
   await expect(loginPage.documentLink).toHaveAttribute('class', 'blinkingText');
 });
 
 test('@Child windows handle', async ({ browser }) => {
+  //browser.newContext(); indeed creates a new browsing context 
+  //that allows for isolated sessions,
   const context: BrowserContext = await browser.newContext();
   const page: Page = await context.newPage();
   const loginPage = new LoginPage(page);
 
   await loginPage.goto();
 
+  //Promise.all guarantees that you will get the new Page object as soon as the new tab 
+  //or window is opened as a result of the click.
+  // Object	Event Name	Purpose
+  // context	'page'	Wait for new tab/window in the context
+  // page	'popup'	Wait for popup opened from this page
+  // page	'request'	Wait for network request => such as an API call, image load, CSS/JS file, etc
+  // page	'dialog'	Wait for alert/confirm/prompt dialog
   const [newPage] = await Promise.all([
     context.waitForEvent('page'),
     loginPage.documentLink.click(),

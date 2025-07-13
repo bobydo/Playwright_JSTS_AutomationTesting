@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { CommonSelectors } from '../Common/CommonSelectors';
 
 export class LoginPage {
   readonly page: Page;
@@ -14,15 +15,15 @@ export class LoginPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.userName = page.locator('#username');
-    this.password = page.locator('[type="password"]');
-    this.signIn = page.locator('#signInBtn');
-    this.cardTitles = page.locator('.card-body a');
-    this.documentLink = page.locator('[href*="documents-request"]');
-    this.dropdown = page.locator('select.form-control');
-    this.radioLast = page.locator('.radiotextsty').last();
-    this.okayBtn = page.locator('#okayBtn');
-    this.terms = page.locator('#terms');
+    this.userName = page.locator(CommonSelectors.userName);
+    this.password = page.locator(CommonSelectors.password);
+    this.signIn = page.locator(CommonSelectors.signIn);
+    this.cardTitles = page.locator(CommonSelectors.cardTitles);
+    this.documentLink = page.locator(CommonSelectors.documentLink);
+    this.dropdown = page.locator(CommonSelectors.dropdown);
+    this.radioLast = page.locator(CommonSelectors.radioLast).last();
+    this.okayBtn = page.locator(CommonSelectors.okayBtn);
+    this.terms = page.locator(CommonSelectors.terms);
   }
 
   async goto() {
@@ -36,7 +37,7 @@ export class LoginPage {
   }
 
   async getErrorText() {
-    return this.page.locator('[style*="block"]').textContent();
+    return this.page.locator(CommonSelectors.errorBlock).textContent();
   }
 
   async getCardTitles() {
