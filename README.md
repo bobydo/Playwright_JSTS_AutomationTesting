@@ -62,5 +62,17 @@ export const expect = playwright.expect;
 npx playwright test tests/UIBasicstest.spec.js
 ```
 
+## debug one test case only
+```
+test.only('@Web UI Controls', async ({ page }) => {
+npx playwright test --debug
+```
+## increase timeout and expect timeout for debug only
+```
+export default defineConfig({
+  testDir: './tests',
+  timeout: process.env.PWDEBUG ? 120 * 1000 : 40 * 1000, // 2 min for debug, 40s otherwise
+  expect: { timeout: process.env.PWDEBUG ? 20000 : 5000 }, // 20s for debug, 5s otherwise
+```
 
 
