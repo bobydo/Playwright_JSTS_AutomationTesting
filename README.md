@@ -75,4 +75,7 @@ export default defineConfig({
   expect: { timeout: process.env.PWDEBUG ? 20000 : 5000 }, // 20s for debug, 5s otherwise
 ```
 
+## generate test step at beginning
+```npx playwright codegen https://google.com ```
+
 
