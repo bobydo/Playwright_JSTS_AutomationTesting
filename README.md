@@ -4,8 +4,8 @@
 
 ## prepare playwright project
 create folder (the code and test will go there)
-cd to that folder, run "npm init playwright"
-node_modules will be created
+cd to that folder, run playwright locally 
+```npm install -D @playwright/test```
 
 ## playwright modules
 ```
@@ -56,4 +56,11 @@ export const test = playwright.test;
 export const expect = playwright.expect;
 ...
 ```
+
+## run single test file
+```
+npx playwright test tests/UIBasicstest.spec.js
+```
+
+
 
