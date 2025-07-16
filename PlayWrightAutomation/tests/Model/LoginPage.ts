@@ -40,6 +40,7 @@ export class LoginPage {
     return this.page.locator(CommonSelectors.errorBlock).textContent();
   }
 
+  //get all card title content
   async getCardTitles() {
     return this.cardTitles.allTextContents();
   }

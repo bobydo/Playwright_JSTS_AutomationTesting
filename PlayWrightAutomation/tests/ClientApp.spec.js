@@ -22,7 +22,9 @@ test('@Webst Client App login', async ({ page }) => {
    if (count === 0) {
       throw new Error('No products found on the page. Test cannot continue.');
    }
-   productName = await products.nth(0).locator("b").textContent();
+   const firstProductTitle = products.nth(0).locator("b");
+   await firstProductTitle.waitFor({ state: 'visible' }); // Wait for the <b> to be visible
+   productName = await firstProductTitle.textContent();
    await products.nth(0).locator("text= Add To Cart").click();
    // Wait for spinner to disappear
    const overlay = await page.locator('.ngx-spinner-overlay');

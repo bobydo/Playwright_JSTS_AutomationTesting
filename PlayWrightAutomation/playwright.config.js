@@ -15,10 +15,8 @@ import { config } from 'process';
  */
 export default defineConfig({
   testDir: './tests',
-  //default is 30 seconds
-  //timeout: 40*1000,
-  //Timeout for each assertion
-  expect: { timeout: 5000 },
+  timeout: process.env.PWDEBUG ? 120 * 1000 : 60000, // 2 min for debug, 40s otherwise
+  expect: { timeout: process.env.PWDEBUG ? 20000 : 10000 }, // 20s for debug, 5s otherwise
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
