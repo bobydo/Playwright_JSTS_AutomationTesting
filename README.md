@@ -82,6 +82,8 @@ export default defineConfig({
 https://github.com/bobydo/Playwright_JSTS_AutomationTesting/blob/main/PlayWrightAutomation/tests/ClientApp.spec.js
 
 ## typescript version to make code clean and reusable
+![Typescript code sample and folder structure](Readme/TSChange.png)
+
 
 
 
