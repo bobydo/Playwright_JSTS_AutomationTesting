@@ -78,4 +78,12 @@ export default defineConfig({
 ## generate test step at beginning
 ```npx playwright codegen https://google.com ```
 
+## make test less depency on data (first card item)
+https://github.com/bobydo/Playwright_JSTS_AutomationTesting/blob/main/PlayWrightAutomation/tests/ClientApp.spec.js
+
+## typescript version to make code clean and reusable
+
+
+
+
 
