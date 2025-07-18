@@ -95,6 +95,10 @@ Step through your test code line by line
 Inspect the page state and elements
 Try locators and actions manually
 
+## API call
+![Find API call and post it in postman](Readme/APICall.png)
+
+
 
 
 
