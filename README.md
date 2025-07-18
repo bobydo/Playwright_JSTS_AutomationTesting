@@ -95,8 +95,9 @@ Step through your test code line by line
 Inspect the page state and elements
 Try locators and actions manually
 
-## API call
+## API call and token
 ![Find API call and post it in postman](Readme/APICall.png)
+![Sessioin token](Readme/SessionToken.png)
 
 
 
