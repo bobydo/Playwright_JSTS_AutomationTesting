@@ -84,6 +84,17 @@ https://github.com/bobydo/Playwright_JSTS_AutomationTesting/blob/main/PlayWright
 ## typescript version to make code clean and reusable
 ![Typescript code sample and folder structure](Readme/TSChange.png)
 
+## The primary benefit of using await page.pressSequentially("ind"); over await page.fill("input", "ind"); 
+is that it simulates real user typing, sending each key event one by one. This can trigger JavaScript events (like onKeyPress, onInput, onChange) 
+and autocomplete behaviors that may not be triggered by fill, which sets the value directly.
+
+## You should consider using await page.pause() in your Playwright test script 
+when you want to debug your test interactively. It pauses the test execution and opens the Playwright Inspector, 
+allowing you to:
+Step through your test code line by line
+Inspect the page state and elements
+Try locators and actions manually
+
 
 
 
