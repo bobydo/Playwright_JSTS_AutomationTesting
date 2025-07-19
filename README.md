@@ -120,9 +120,23 @@ test.beforeAll(async ({ browser }) => {
 ## Use VS code Debug (not npx command line)
 ![VS code Debug with break point](Readme/ConfigNodeJSdebug.png)
 
-
-
-
-
-
-
+## npx CLI arguments
+```
+Here’s a table of common Playwright CLI options for npx playwright test and what they do:
+Option				Description
+--headed			Runs browsers in headed mode (shows browser window).
+--debug				Opens Playwright Inspector for interactive debugging.
+--project=<name>	Runs tests only for the specified project (browser) from your config.
+--grep <pattern>	Runs only tests matching the pattern (by title).
+`--trace on	off
+--workers <number>	Sets the number of parallel workers (threads) for running tests.
+--timeout <ms>		Overrides the default test timeout (in milliseconds).
+--reporter <type>	Specifies the reporter type (e.g., html, list, json).
+--output <dir>		Sets the output directory for test artifacts (screenshots, videos, traces).
+--update-snapshots	Updates all visual and text snapshots.
+--list				Lists all discovered tests without running them.
+--max-failures <n>	Stops the test run after n failures.
+--ui				Opens the Playwright Test UI for running and managing tests interactively.
+Example usage:
+npx playwright test --headed --debug --project=chromium --grep "login"
+```
