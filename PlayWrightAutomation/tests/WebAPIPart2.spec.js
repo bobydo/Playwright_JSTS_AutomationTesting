@@ -1,5 +1,4 @@
 //Login UI  -> .json
-
 //test browser-> .json , cart-,order, orderdetails,orderhistory
 const { test, expect } = require('@playwright/test');
 let webContext;
@@ -12,12 +11,11 @@ test.beforeAll(async ({ browser }) => {
     await page.locator("#userPassword").fill("Iamking@000");
     await page.locator("[value='Login']").click();
     await page.waitForLoadState('networkidle');
+    //Saves the browser context’s storage state (cookies, localStorage, etc.) to a file called state.json.
     await context.storageState({ path: 'state.json' });
+    //All tests can use webContext to start with a logged-in session, 
+    //skipping the UI login step and speeding up test execution.
     webContext = await browser.newContext({ storageState: 'state.json' });
-
-
-
-
 })
 
 test('@QA Client App login', async () => {

@@ -1,3 +1,4 @@
+// use api to place a order and verify it from interface
 const {test, expect, request} = require('@playwright/test');
 const {APiUtils} = require('../utils/APiUtils');
 const loginPayLoad = {userEmail:"anshika@gmail.com",userPassword:"Iamking@000"};
@@ -9,6 +10,7 @@ test.beforeAll( async()=>
 {
    const apiContext = await request.newContext();
    const apiUtils = new APiUtils(apiContext,loginPayLoad);
+   //response.token = await this.getToken(); will do login inside of createOrder
    response =  await apiUtils.createOrder(orderPayLoad);
 
 })
@@ -17,6 +19,8 @@ test.beforeAll( async()=>
 //create order is success
 test('@API Place the order', async ({page})=>
 { 
+    //This injects the token before the page loads, 
+    //allowing the web app to treat the user as "logged in" automatically.
     page.addInitScript(value => {
 
         window.localStorage.setItem('token',value);

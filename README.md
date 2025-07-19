@@ -99,6 +99,24 @@ Try locators and actions manually
 ![Find API call and post it in postman](Readme/APICall.png)
 ![Sessioin token](Readme/SessionToken.png)
 
+## Login once and save all state to json file and use webContext to skip login
+```
+test.beforeAll(async ({ browser }) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    await page.goto("https://rahulshettyacademy.com/client");
+    await page.locator("#userEmail").fill("rahulshetty@gmail.com");
+    await page.locator("#userPassword").fill("Iamking@000");
+    await page.locator("[value='Login']").click();
+    await page.waitForLoadState('networkidle');
+    //Saves the browser context’s storage state (cookies, localStorage, etc.) to a file called state.json.
+    await context.storageState({ path: 'state.json' });
+    //All tests can use webContext to start with a logged-in session, 
+    //skipping the UI login step and speeding up test execution.
+    webContext = await browser.newContext({ storageState: 'state.json' });
+})
+```
+
 
 
 
