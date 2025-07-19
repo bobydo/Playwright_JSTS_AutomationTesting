@@ -119,6 +119,8 @@ test.beforeAll(async ({ browser }) => {
 
 ## Use VS code Debug (not npx command line)
 ![VS code Debug with break point](Readme/ConfigNodeJSdebug.png)
+OR
+![ctrl+shift+P or select debug from package.json](Readme/DebugNpx.png)
 
 ## npx CLI arguments
 ```
