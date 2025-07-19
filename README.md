@@ -117,6 +117,9 @@ test.beforeAll(async ({ browser }) => {
 })
 ```
 
+## Use VS code Debug (not npx command line)
+![VS code Debug with break point](Readme/ConfigNodeJSdebug.png)
+
 
 
 
