@@ -169,5 +169,27 @@ FileHelper for find folder and file, for file download and upload used in Screen
 ## test responsive on cell phone and recording on failure
 npx playwright test tests/testcase.js --config=playwright.config.cellphone.js --headed
 
+## Race conditions in Playwright tests often happen when tests run in parallel and share state 
+(e.g., same user, database, or files), causing unpredictable failures.
+
+How to Fix Race Conditions
+Run dependent tests in serial:
+Use test.describe.configure({ mode: 'serial' }) so tests run one after another.
+
+Isolate test data:
+Use unique data for each test (e.g., different users, temp files).
+
+Avoid shared resources:
+Don’t let tests modify the same resource at the same time.
+
+## Run Only Tagged Tests (TagTests.js)
+### Run only smoke tests:
+npx playwright test --grep @smoke
+### Run only regression tests:
+npx playwright test --grep @regression
+### Exclude a tag (run all except smoke):
+npx playwright test --grep-invert @smoke
+
+
 
 
