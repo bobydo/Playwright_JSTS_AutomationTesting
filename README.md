@@ -252,8 +252,10 @@ pipeline {
 
 ## To use Cucumber with Playwright, you need 
 npm install @cucumber/cucumber @playwright/test
-Set up Cucumber configuration and organize your feature files
+install cucumber extension
+![Cucumber Extension](Readme/CucumberExtension.png)
 
+Set up Cucumber configuration and organize your feature files
 Place feature files in the features folder.
 Place step definitions in step-definitions/.
 Configure Cucumber in cucumber.js (important it has its own config)
