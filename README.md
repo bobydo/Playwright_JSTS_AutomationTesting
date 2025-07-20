@@ -263,5 +263,17 @@ Set up Cucumber configuration and organize your feature files
 - Run tests with npx cucumber-js.
 ![Cucumber](Readme/Cucumber.png)
 
+## After create setting.json, right click feature steps
+```
+{
+  "cucumberautocomplete.steps": [
+    "features/step_definitions/*.js",
+    "features/step_definitions/*.ts"
+  ],
+  "cucumberautocomplete.syncfeatures": "features/*.feature"
+}
+```
+![F12](Readme/F12.png)
+
 
 
