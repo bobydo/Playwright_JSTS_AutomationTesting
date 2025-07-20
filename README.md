@@ -275,5 +275,20 @@ Set up Cucumber configuration and organize your feature files
 ```
 ![F12](Readme/F12.png)
 
+## Cucumber debug
+```
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Cucumber Feature",
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber-js",
+      "args": [
+        "features/ErrorValidation.feature"
+      ],
+      "console": "integratedTerminal"
+    }
+```
+Ctrl + Shift + D to choose which debugger
+![Cucumber debug](Readme/CucumberDebug.png)
 
 
