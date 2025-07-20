@@ -166,3 +166,8 @@ test-base.js extend test of playwright
 FileHelper for find folder and file, for file download and upload used in ScreenshotValidations.spec.js
 ```
 
+## test responsive on cell phone and recording on failure
+npx playwright test tests/testcase.js --config=playwright.config.cellphone.js --headed
+
+
+
