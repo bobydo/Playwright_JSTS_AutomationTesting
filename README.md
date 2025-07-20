@@ -190,6 +190,29 @@ npx playwright test --grep @regression
 ### Exclude a tag (run all except smoke):
 npx playwright test --grep-invert @smoke
 
+## Allure Reporting (Update your playwright.config.js)
+```
+npm install allure-playwright --save-dev
+reporter: [
+  ['html', { open: 'never' }],
+  ['allure-playwright']
+],
+```
 
+## Create custom scripts to trigger the tests from package.json file
+```
+{
+  "scripts": {
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
+    "test:all": "npx playwright test",
+    "test:html": "npx playwright test --reporter=html"
+  }
+}
+npm run test:smoke
+npm run test:regression
+npm run test:all
+npm run test:html
+```
 
 
