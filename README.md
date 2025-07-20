@@ -159,3 +159,10 @@ For example, const fakePayLoadOrders = { data: [], message: "No Orders" };
 await page.screenshot({path: 'screenshot.png'});
 expect(await page.screenshot()).toMatchSnapshot('landing.png');
 ```
+## Features
+```
+placeorderTestData.json shows load data from json file
+test-base.js extend test of playwright
+FileHelper for find folder and file, for file download and upload used in ScreenshotValidations.spec.js
+```
+
