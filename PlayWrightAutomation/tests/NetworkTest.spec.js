@@ -1,7 +1,6 @@
 const { test, expect, request } = require('@playwright/test');
 const { APiUtils } = require('../utils/APiUtils');
 const loginPayLoad = {userEmail: "anshika@gmail.com", userPassword: "Iamking@000"};
-const orderPayLoad = { orders: [{ country: "India", productOrderedId: "687be8ee6eb3777530a98cf0" }] };
 const fakePayLoadOrders = { data: [], message: "No Orders" };
 
 let response = {}; 
@@ -31,7 +30,6 @@ test('@SP Place the order', async ({ page }) => {
         });
         //intercepting response -APi response-> { playwright fakeresponse}->browser->render data on front end
     });
-
   await page.locator("button[routerlink*='myorders']").click();
   await page.waitForResponse("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*")
   console.log(await page.locator(".mt-4").textContent());

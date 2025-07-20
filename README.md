@@ -142,3 +142,20 @@ Option				Description
 Example usage:
 npx playwright test --headed --debug --project=chromium --grep "login"
 ```
+## page.route to intercept, modify, block, or mock network requests.
+```
+Common use cases:
+Use Case						Example Scenario
+Mock API responses				Return fake data for API endpoints to test UI behavior.
+Block requests					Prevent loading of ads, images, or third-party resources.
+Modify requests/responses		Change request headers, payloads, or response bodies.
+Simulate errors/timeouts		Test how your app handles failed or slow network calls.
+Test edge cases					Provide specific data or errors that are hard to reproduce.
+For example, const fakePayLoadOrders = { data: [], message: "No Orders" };
+```
+
+## take screenshot and comparie it with previous
+```
+await page.screenshot({path: 'screenshot.png'});
+expect(await page.screenshot()).toMatchSnapshot('landing.png');
+```
