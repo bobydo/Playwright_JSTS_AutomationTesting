@@ -215,4 +215,51 @@ npm run test:all
 npm run test:html
 ```
 
+## Intergrate with Jenkin
+Jenkins passes the TEST_TAG parameter to the Playwright CLI.
+You can trigger the job with any tag (e.g., @smoke, @regression).
+The HTML report is published after the test run.
+```
+pipeline {
+    agent any
+    parameters {
+        string(name: 'TEST_TAG', defaultValue: '@smoke', description: 'Tag to run Playwright tests')
+    }
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+        stage('Run Playwright Tests') {
+            steps {
+                sh "npx playwright test --grep ${params.TEST_TAG} --reporter=html"
+            }
+        }
+        stage('Publish HTML Report') {
+            steps {
+                publishHTML(target: [
+                    reportName: 'Playwright HTML Report',
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    alwaysLinkToLastBuild: true
+                ])
+            }
+        }
+    }
+}
+```
+
+## To use Cucumber with Playwright, you need 
+npm install @cucumber/cucumber @playwright/test
+Set up Cucumber configuration and organize your feature files
+
+Place feature files in the features folder.
+Place step definitions in step-definitions/.
+Configure Cucumber in cucumber.js (important it has its own config)
+Use Playwright in your step definitions for browser automation.
+Run tests with npx cucumber-js.
+![Cucumber](Readme/Cucumber.png)
+
+
 
